@@ -1,0 +1,17 @@
+#in my_import.py
+#def add(a,b):
+#      c = a + b
+#      print(f"result is {c}")
+#      return c
+#member_add = 10
+#########
+#in my_test_import.py to execute
+#import my_import
+
+#my_import.add(1,2)
+#print(my_import.member_add)
+
+from my_import import add, member_add
+add(1,2)
+
+print(f"{member_add} ")
