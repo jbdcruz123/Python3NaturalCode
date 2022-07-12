@@ -1,0 +1,84 @@
+#RSM 07122002
+#super function with arguments, mro method resolution order rules
+
+class cl_b(): #1
+      def __init__(self) :#2
+            print(f"inside __init__ from cl_b\n")     
+            super(cl_b, self).__init__()
+            
+
+            self.str_var_cl_b = "str_var_cl_b from cl_b" 
+      #2
+      
+      def f_func_cl_b(self) :#2
+            print(f"inside f_Func_cl_b from cl_b\n")      
+      #2
+
+#1
+
+
+class cl_c(): #1
+      def __init__(self) :#2
+            print(f"inside __init__ from cl_c\n")      
+            super(cl_c, self).__init__()
+            
+
+            self.str_var_cl_c = "str_var_cl_c from cl_c" 
+      #2
+      
+      def f_func_cl_c(self) :#2
+            print(f"inside f_Func_cl_c from cl_c\n")      
+      #2
+
+#1
+
+class cl_a(cl_b, cl_c): #1
+      def __init__(self) :#2
+            print(f"inside __init__ from cl_a\n")  
+
+            #new method kaylangan bawat implement ay
+            #tatawing ng super tignan sa naunang lines
+            super(cl_a, self).__init__()
+
+            #manual calling old na method na ito
+            #cl_c.__init__(cl_c)
+
+            #cl_b.__init__(cl_b)            
+
+            self.str_var_cl_a = "str_var_cl_a from cl_a"  
+      #2
+      
+      def f_func_cl_a(self) :#2
+            print(f"inside f_Func_cl_a from cl_a\n")     
+
+            print(f"inherit cl_b |{self.str_var_cl_b}|\n") 
+            
+            print(f"inherit cl_c |{self.str_var_cl_c}|\n") 
+      #2
+
+#1
+
+
+ob_a = cl_a()
+
+ob_a.f_func_cl_a()
+
+#display the list of order MRO (method resolution order) class object
+print(f"mro {cl_a.__mro__}\n")
+
+
+#print(f"__dict__ {ob_a.__dict__()}\n")
+
+print(f"dir(ob_a)  {dir(ob_a) }\n")
+
+
+print(f"ob_a.str_var_cl_b |{ob_a.str_var_cl_b}|\n") 
+            
+print(f"ob_a.str_var_cl_c |{ob_a.str_var_cl_c}|\n") 
+
+
+
+
+
+
+
