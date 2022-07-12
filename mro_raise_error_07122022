@@ -1,0 +1,36 @@
+#RSM 07122022
+#MRO method resolution order
+
+class First(object):
+    def __init__(self):
+        print("first")
+
+#error MRO
+class Second(First):
+    def __init__(self):
+        print("second")
+
+class Third(First, Second):
+    def __init__(self):
+        print("third")
+
+#will raise error kasi umulit ung First na na-call na
+print(Third.__mro__)
+
+
+"""
+#python will raise error 
+
+the call in order will be Third, First, Second, First
+the first repeat again ( Third First Second "hindi dpat magiging kamukha nung
+naunang class object"
+
+
+Traceback (most recent call last):
+  File "inorder_mro.py", line 9, in <module>
+    class Third(First, Second):
+TypeError: Cannot create a consistent method resolution
+order (MRO) for bases First, Second
+
+
+"""
